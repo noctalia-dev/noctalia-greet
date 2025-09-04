@@ -1,0 +1,10 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        numlock
+    }
+}
+
+spawn-sh-at-startup "qs -p ~/.config/quickshell/noctalia-greet/"
