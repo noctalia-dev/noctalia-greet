@@ -29,6 +29,37 @@ if [ ! -f "$GREETER_SCRIPT" ]; then
 fi
 chmod +x "$GREETER_SCRIPT"
 
+# Ask which compositor to use and toggle the correct exec line in the greeter script
+echo "\nChoose the compositor to run the greeter under:"
+echo "  1) Niri"
+echo "  2) Hyprland"
+read -r -p "Enter 1 or 2 [default: 1]: " COMP_CHOICE
+
+# Default to Niri if empty
+if [ -z "$COMP_CHOICE" ]; then
+  COMP_CHOICE=1
+fi
+
+case "$COMP_CHOICE" in
+  1|n|N)
+    echo "Selected: Niri"
+    # Uncomment niri line; comment hyprland line
+    sed -i 's/^#\?exec niri/exec niri/' "$GREETER_SCRIPT"
+    sed -i 's/^exec hyprland/#exec hyprland/' "$GREETER_SCRIPT"
+    ;;
+  2|h|H)
+    echo "Selected: Hyprland"
+    # Uncomment hyprland line; comment niri line
+    sed -i 's/^#\?exec hyprland/exec hyprland/' "$GREETER_SCRIPT"
+    sed -i 's/^exec niri/#exec niri/' "$GREETER_SCRIPT"
+    ;;
+  *)
+    echo "Unrecognized choice '$COMP_CHOICE'. Defaulting to Niri."
+    sed -i 's/^#\?exec niri/exec niri/' "$GREETER_SCRIPT"
+    sed -i 's/^exec hyprland/#exec hyprland/' "$GREETER_SCRIPT"
+    ;;
+esac
+
 # Write greetd configuration
 echo "Updating $GREETD_CONFIG (requires sudo)..."
 sudo bash -c "cat > $GREETD_CONFIG" <<EOF
