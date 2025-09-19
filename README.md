@@ -32,16 +32,11 @@
 ## 🚀 Getting Started
 
 **New to Noctalia Greeter?**  
-Check out our documentation & installation guide to get started!
 
 Quick install: `bash <(curl -sSL https://raw.githubusercontent.com/noctalia-dev/noctalia-greet/main/noctalia-greet-install.sh)`
-
-<a href="https://docs.noctalia.dev/getting-started/installation">
-  <img src="https://img.shields.io/badge/⚡%20Quick%20Install-Get%20Started-A8AEFF?style=for-the-badge&logoColor=FFFFFF&labelColor=0C0D11" alt="Quick Install" />
-</a>
   
   
-**Need help?** Join our [Discord community](https://discord.noctalia.dev) or browse the [FAQ](https://docs.noctalia.dev/getting-started/faq/).
+**Need help?** Join our [Discord community](https://discord.noctalia.dev).
 
 ---
 
