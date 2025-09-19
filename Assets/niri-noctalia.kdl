@@ -7,4 +7,4 @@ input {
     }
 }
 
-spawn-sh-at-startup "qs -p __NOCTALIA_GREET_DIR__"
+spawn-sh-at-startup "qs -p ~/.config/quickshell/noctalia-greet/"
