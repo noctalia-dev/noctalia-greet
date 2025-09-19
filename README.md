@@ -33,8 +33,10 @@
 
 **New to Noctalia Greeter?**  
 
-Quick install: `bash <(curl -sSL https://raw.githubusercontent.com/noctalia-dev/noctalia-greet/main/noctalia-greet-install.sh)`
-  
+Quick install:
+`git clone https://github.com/noctalia-dev/noctalia-greet && cd noctalia-greet`
+`chmod +x noctalia-greet-install.sh`
+`./noctalia-greet-install.sh`
   
 **Need help?** Join our [Discord community](https://discord.noctalia.dev).
 
