@@ -10,14 +10,11 @@ Singleton {
 
   // App dirs
   property string appName: "noctalia-greet"
-  property string cacheDir: Quickshell.env("NOCTALIA_CACHE_DIR") || (Quickshell.env("XDG_CACHE_HOME") || Quickshell.env(
-                                                                       "HOME") + "/.cache") + "/" + appName + "/"
+  property string cacheDir: Quickshell.env("NOCTALIA_CACHE_DIR") || (Quickshell.env("XDG_CACHE_HOME") || Quickshell.env("HOME") + "/.cache") + "/" + appName + "/"
   property string settingsFile: cacheDir + "cache.json"
 
   // Noctalia main config path
-  property string noctaliaConfigDir: Quickshell.env("NOCTALIA_CONFIG_DIR") || (Quickshell.env("XDG_CONFIG_HOME")
-                                                                               || Quickshell.env(
-                                                                                 "HOME") + "/.config") + "/noctalia/"
+  property string noctaliaConfigDir: Quickshell.env("NOCTALIA_CONFIG_DIR") || (Quickshell.env("XDG_CONFIG_HOME") || Quickshell.env("HOME") + "/.config") + "/noctalia/"
   property string noctaliaSettingsFile: noctaliaConfigDir + "settings.json"
 
   // Noctalia configuration properties

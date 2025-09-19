@@ -16,9 +16,7 @@ Singleton {
   property string theme: "dark"
 
   // User config directory (~/.config/noctalia/ by default)
-  readonly property string noctaliaConfigDir: Quickshell.env("NOCTALIA_CONFIG_DIR")
-                                              || (Quickshell.env("XDG_CONFIG_HOME") || Quickshell.env(
-                                                    "HOME") + "/.config") + "/noctalia/"
+  readonly property string noctaliaConfigDir: Quickshell.env("NOCTALIA_CONFIG_DIR") || (Quickshell.env("XDG_CONFIG_HOME") || Quickshell.env("HOME") + "/.config") + "/noctalia/"
   readonly property string userColorsPath: noctaliaConfigDir + "colors.json"
 
   // Preferred flat palette loader (Commons/colors.json)
@@ -66,8 +64,7 @@ Singleton {
   }
 
   // Active palette: prefer flat colors.json if present and valid, else themed noctalia.json
-  readonly property bool hasSimplePalette: simplePalette && simplePalette.mPrimary !== undefined
-                                           && simplePalette.mPrimary !== null
+  readonly property bool hasSimplePalette: simplePalette && simplePalette.mPrimary !== undefined && simplePalette.mPrimary !== null
   readonly property var colors: hasSimplePalette ? simplePalette : (theme === "light" ? palette.light : palette.dark)
 
   // Expose top-level color properties
