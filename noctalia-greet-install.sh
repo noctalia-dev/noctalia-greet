@@ -10,13 +10,15 @@ CONFIG_DIR="$HOME/.config/quickshell/noctalia/noctalia-greet"
 GREETER_SCRIPT="$CONFIG_DIR/Assets/noctalia-greet.sh"
 GREETD_CONFIG="/etc/greetd/config.toml"
 
-# Clone or update the repo
+# Clone or update the repo (HTTPS instead of SSH)
 if [ ! -d "$CONFIG_DIR" ]; then
     echo "Cloning noctalia-greet repository into $CONFIG_DIR..."
-    git clone git@github.com:noctalia-dev/noctalia-greet.git "$CONFIG_DIR"
+    git clone https://github.com/noctalia-dev/noctalia-greet.git "$CONFIG_DIR"
 else
     echo "Repository already exists, updating with git pull..."
     cd "$CONFIG_DIR"
+    # ensure we’re on https
+    git remote set-url origin https://github.com/noctalia-dev/noctalia-greet.git
     git pull
 fi
 
