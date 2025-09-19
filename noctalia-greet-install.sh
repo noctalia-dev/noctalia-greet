@@ -6,8 +6,9 @@
 set -e
 
 # Config
-CONFIG_DIR="$HOME/.config/quickshell/noctalia/noctalia-greet"
-GREETER_SCRIPT="$CONFIG_DIR/Assets/noctalia-greet.sh"
+CONFIG_DIR="$HOME/.config/quickshell/noctalia-greet"
+GREETER_SCRIPT_NIRI="$CONFIG_DIR/Bin/greet-niri.sh"
+GREETER_SCRIPT_HYPR="$CONFIG_DIR/Bin/greet-hyprland.sh"
 GREETD_CONFIG="/etc/greetd/config.toml"
 
 # Clone or update the repo (HTTPS instead of SSH)
@@ -22,12 +23,12 @@ else
     git pull
 fi
 
-# Make the greeter script executable
-if [ ! -f "$GREETER_SCRIPT" ]; then
-    echo "Error: Greeter script not found at $GREETER_SCRIPT"
+# Make the greeter scripts executable
+if [ ! -f "$GREETER_SCRIPT_NIRI" ] || [ ! -f "$GREETER_SCRIPT_HYPR" ]; then
+    echo "Error: Greeter scripts not found in $CONFIG_DIR/Bin"
     exit 1
 fi
-chmod +x "$GREETER_SCRIPT"
+chmod +x "$GREETER_SCRIPT_NIRI" "$GREETER_SCRIPT_HYPR"
 
 # Ask which compositor to use and toggle the correct exec line in the greeter script
 echo "\nChoose the compositor to run the greeter under:"
@@ -43,20 +44,15 @@ fi
 case "$COMP_CHOICE" in
   1|n|N)
     echo "Selected: Niri"
-    # Uncomment niri line; comment hyprland line
-    sed -i 's/^#\?exec niri/exec niri/' "$GREETER_SCRIPT"
-    sed -i 's/^exec hyprland/#exec hyprland/' "$GREETER_SCRIPT"
+    SELECTED_COMMAND="$GREETER_SCRIPT_NIRI"
     ;;
   2|h|H)
     echo "Selected: Hyprland"
-    # Uncomment hyprland line; comment niri line
-    sed -i 's/^#\?exec hyprland/exec hyprland/' "$GREETER_SCRIPT"
-    sed -i 's/^exec niri/#exec niri/' "$GREETER_SCRIPT"
+    SELECTED_COMMAND="$GREETER_SCRIPT_HYPR"
     ;;
   *)
     echo "Unrecognized choice '$COMP_CHOICE'. Defaulting to Niri."
-    sed -i 's/^#\?exec niri/exec niri/' "$GREETER_SCRIPT"
-    sed -i 's/^exec hyprland/#exec hyprland/' "$GREETER_SCRIPT"
+    SELECTED_COMMAND="$GREETER_SCRIPT_NIRI"
     ;;
 esac
 
@@ -67,7 +63,7 @@ sudo bash -c "cat > $GREETD_CONFIG" <<EOF
 vt = 1
 
 [default_session]
-command = "$GREETER_SCRIPT"
+command = "$SELECTED_COMMAND"
 user = "$USER"
 EOF
 
