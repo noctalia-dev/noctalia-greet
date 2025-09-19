@@ -7,4 +7,4 @@ input {
     }
 }
 
-spawn-sh-at-startup "qs -p /mnt/storage/GitHub/noctalia-dev/noctalia-greet/"
+spawn-sh-at-startup "qs -p __NOCTALIA_GREET_DIR__"
