@@ -34,6 +34,7 @@
 **New to Noctalia Greeter?**  
 
 Quick install:
+
 `git clone https://github.com/noctalia-dev/noctalia-greet && cd noctalia-greet`
 
 `chmod +x noctalia-greet-install.sh`
