@@ -150,13 +150,6 @@ ShellRoot {
 
           onAuthenticateRequested: root.authenticate()
         }
-
-        // Power buttons at bottom right
-        PowerButtons {
-          anchors.right: parent.right
-          anchors.bottom: parent.bottom
-          anchors.margins: 50
-        }
       }
 
       // Hidden password input (keeps key handling consistent)

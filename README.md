@@ -23,10 +23,18 @@
 
 ---
 
+> ⚠️ **WARNING** ⚠️  
+> `noctalia-greet` is VERY early in development, please be aware that there might be crashes, bugs etc.  
+> This is basically an alpha, while I did test it thoroughly without issues, that doesnt mean that there won't be any.
+
+---
+
 ## 🚀 Getting Started
 
 **New to Noctalia Greeter?**  
 Check out our documentation & installation guide to get started!
+
+Quick install: `bash <(curl -sSL https://raw.githubusercontent.com/noctalia-dev/noctalia-greet/main/noctalia-greet-install.sh)`
 
 <a href="https://docs.noctalia.dev/getting-started/installation">
   <img src="https://img.shields.io/badge/⚡%20Quick%20Install-Get%20Started-A8AEFF?style=for-the-badge&logoColor=FFFFFF&labelColor=0C0D11" alt="Quick Install" />
